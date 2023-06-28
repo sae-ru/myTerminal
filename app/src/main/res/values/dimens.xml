@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="main_tablet_padding">30dp</dimen>
+    <dimen name="very_big_view_distance">100dp</dimen>
+    <dimen name="big_view_distance">60dp</dimen>
+    <dimen name="medium_view_distance">30dp</dimen>
+
+    <dimen name="min_button_width">175dp</dimen>
+    <dimen name="standard_field_width">250dp</dimen>
+    <dimen name="big_field_width">350dp</dimen>
+    <dimen name="small_field_width">150dp</dimen>
+    <dimen name="standard_field_height">75dp</dimen>
+
+    <dimen name="image_face_height">500dp</dimen>
+    <dimen name="image_face_width">800dp</dimen>
+
+</resources>

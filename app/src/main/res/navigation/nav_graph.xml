@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/chooseActionFragment">
+
+    <fragment
+        android:id="@+id/chooseActionFragment"
+        android:name="com.example.myterminal.registration.ChooseActionFragment"
+        android:label="@string/layout_label_step1"
+        tools:layout="@layout/fragment_choose_action" >
+        <action
+            android:id="@+id/action_chooseActionFragment_to_chooseWriteActionFragment"
+            app:destination="@id/chooseWriteActionFragment" />
+        <action
+            android:id="@+id/action_chooseActionFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseWriteActionFragment"
+        android:name="com.example.myterminal.registration.ChooseWriteActionFragment"
+        android:label="@string/layout_label_step2"
+        tools:layout="@layout/fragment_choose_write_action" >
+        <action
+            android:id="@+id/action_chooseWriteActionFragment_to_fillDataFragment"
+            app:destination="@id/fillDataFragment" />
+        <action
+            android:id="@+id/action_chooseWriteActionFragment_to_takePassportPhotoFragment"
+            app:destination="@id/takePassportPhotoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fillDataFragment"
+        android:name="com.example.myterminal.registration.FillDataFragment"
+        android:label="@string/layout_label_step3"
+        tools:layout="@layout/fragment_fill_data" >
+        <action
+            android:id="@+id/action_fillDataFragment_to_takeFacePhotoFragment"
+            app:destination="@id/takeFacePhotoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.myterminal.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/takePassportPhotoFragment"
+        android:name="com.example.myterminal.registration.TakePassportPhotoFragment"
+        android:label="fragment_take_passport_photo"
+        tools:layout="@layout/fragment_take_passport_photo" >
+        <action
+            android:id="@+id/action_takePassportPhotoFragment_to_fillDataFragment"
+            app:destination="@id/fillDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/takeFacePhotoFragment"
+        android:name="com.example.myterminal.registration.TakeFacePhotoFragment"
+        android:label="fragment_take_face_photo"
+        tools:layout="@layout/fragment_take_face_photo" >
+        <action
+            android:id="@+id/action_takeFacePhotoFragment_to_endRegistrationFragment"
+            app:destination="@id/endRegistrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/endRegistrationFragment"
+        android:name="com.example.myterminal.registration.EndRegistrationFragment"
+        android:label="fragment_end_registration"
+        tools:layout="@layout/fragment_end_registration" />
+</navigation>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Layout for choose: enter manually or take a photo -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".registration.ChooseWriteActionFragment">
+
+    <data>
+
+        <variable
+            name="chooseWriteActionFragment"
+            type="com.example.myterminal.registration.ChooseWriteActionFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/main_tablet_padding">
+
+        <LinearLayout
+            android:id="@+id/chooseWriteActionLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                style="@style/TextAppearance.MyTerminal.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/big_view_distance"
+                android:text="@string/choose_write_action_text"
+                android:textAppearance="?attr/textAppearanceHeadline4"
+                android:textColor="@color/material_on_background_emphasis_medium" />
+
+            <Button
+                android:id="@+id/scan_passport_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/medium_view_distance"
+                android:minWidth="@dimen/min_button_width"
+                android:onClick="@{() -> chooseWriteActionFragment.scanPassport()}"
+                android:text="@string/scan_passport_button_text" />
+
+            <Button
+                android:id="@+id/manually_write_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:minWidth="@dimen/min_button_width"
+                android:onClick="@{() -> chooseWriteActionFragment.writeManually()}"
+                android:text="@string/manually_write_button_text" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

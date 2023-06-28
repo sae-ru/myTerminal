@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Text Appearance Subtitle1 style -->
+    <style name="TextAppearance.MyTerminal.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="TextAppearance.MyTerminal.Subtitle4" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.MyTerminal.Subtitle6" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Widget.MyTerminal.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeErrorColor">@color/red_700</item>
+        <item name="errorIconTint">@color/red_700</item>
+        <item name="errorTextColor">@color/red_700</item>
+        <item name="errorIconDrawable">@drawable/ic_error</item>
+        <item name="helperTextTextAppearance">@style/TextAppearance.MyTerminal.Subtitle6</item>
+    </style>
+
+<!--    <style name="Widget.MyTerminal.Button" parent="Widget.MaterialComponents.Button.TextButton"></style>-->
+
+</resources>

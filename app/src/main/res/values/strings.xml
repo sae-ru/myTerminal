@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">myTerminal</string>
+
+    <string-array name="genders_array">
+        <item>Муж</item>
+        <item>Жен</item>
+    </string-array>
+
+    <string name="choose_action_text">Выберите действие:</string>
+    <string name="action_get_pass_button_text">Получить пропуск</string>
+    <string name="action_setting_button_text">Настройки</string>
+
+    <string name="settings_services_text">Введите адреса сервисов</string>
+    <string name="hint_ocr_service">Адрес сервиса для распознания паспорта</string>
+    <string name="hint_auth_service">Адрес сервиса отправки данных</string>
+
+    <string name="save_button_text">Сохранить</string>
+
+    <string name="layout_label_step1">Шаг 1</string>
+    <string name="layout_label_step2">Шаг 2</string>
+    <string name="layout_label_step3">Шаг 3</string>
+
+    <string name="terminal_statements">Продолжая работать с терминалом, Вы даёте согласие на ввод и обработку персональных данных.</string>
+    <string name="choose_write_action_text">Как вы хотите ввести данные?</string>
+    <string name="scan_passport_button_text">Сканировать паспорт</string>
+    <string name="manually_write_button_text">Ввести вручную</string>
+
+    <string name="image_content_description_passport_text">Фотография пасспорта</string>
+    <string name="image_content_description_face_text">Ваше фото</string>
+    <string name="success_taking_photo">Снимок сделан</string>
+    <string name="retake_photo_button_text">Переснять</string>
+    <string name="empty_photo_toast_text">Фотография не может быть пустой</string>
+
+    <string name="check_entered_data_notice_text">Проверьте введённые паспортные данные</string>
+    <string name="needed_photo_notice_text">Далее необходимо будет сделать ваше фото</string>
+    <string name="hint_passport_ID">Серия и номер паспорта</string>
+    <string name="hint_passport_surname">Фамилия</string>
+    <string name="hint_passport_name">Имя</string>
+    <string name="hint_passport_patronymic">Отчество</string>
+    <string name="hint_passport_birthday">Дата рождения</string>
+    <string name="hint_passport_gender">Пол</string>
+    <string name="error_fields_toast_text">Поля заполнены неверно!</string>
+
+    <string name="continue_button_text">Продолжить</string>
+
+    <string name="empty_field_error">Это поле обязательно</string>
+    <string name="passport_ID_field_error">Номер паспорта составляет ровно 10 цифр</string>
+
+    <string name="end_fragment_text">Успешно!</string>
+
+
+</resources>

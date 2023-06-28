@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Layout for starting registration -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".registration.ChooseActionFragment">
+
+    <data>
+        <variable
+            name="chooseActionFragment"
+            type="com.example.myterminal.registration.ChooseActionFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/main_tablet_padding">
+
+        <Button
+            android:id="@+id/settingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> chooseActionFragment.goToSettings()}"
+            android:text="@string/action_setting_button_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/chooseActionLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/chooseActionWarningTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/chooseActionTV"
+                style="@style/TextAppearance.MyTerminal.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/big_view_distance"
+                android:text="@string/choose_action_text"
+                android:textAppearance="?attr/textAppearanceHeadline4"
+                android:textColor="@color/material_on_background_emphasis_medium" />
+
+            <Button
+                android:id="@+id/get_pass_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:minWidth="@dimen/min_button_width"
+                android:onClick="@{() -> chooseActionFragment.getPass()}"
+                android:text="@string/action_get_pass_button_text" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/chooseActionWarningTV"
+            style="@style/TextAppearance.MyTerminal.Subtitle6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="@string/terminal_statements"
+            android:textAppearance="?attr/textAppearanceHeadline4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

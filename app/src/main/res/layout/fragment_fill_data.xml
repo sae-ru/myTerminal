@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Layout for manual enter for phones-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".registration.FillDataFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical"
+            android:padding="@dimen/main_tablet_padding">
+
+            <TextView
+                android:id="@+id/checkPassportDataTV"
+                style="@style/TextAppearance.MyTerminal.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/big_view_distance"
+                android:gravity="center"
+                android:text="@string/check_entered_data_notice_text"
+                android:textAppearance="?attr/textAppearanceHeadline4"
+                android:textColor="@color/material_on_background_emphasis_medium" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passportIDTextField"
+                style="@style/Widget.MyTerminal.TextInputLayout.OutlinedBox"
+                android:layout_width="@dimen/big_field_width"
+                android:layout_height="@dimen/standard_field_height"
+                android:hint="@string/hint_passport_ID"
+                app:errorIconDrawable="@drawable/ic_error"
+                app:helperTextTextAppearance="@style/TextAppearance.MyTerminal.Subtitle6">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passportIDTextInputET"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="numberDecimal|textNoSuggestions"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/passportSurnameTextField"
+                    style="@style/Widget.MyTerminal.TextInputLayout.OutlinedBox"
+                    android:layout_width="@dimen/standard_field_width"
+                    android:layout_height="@dimen/standard_field_height"
+                    android:hint="@string/hint_passport_surname"
+                    app:errorIconDrawable="@drawable/ic_error"
+                    app:helperTextTextAppearance="@style/TextAppearance.MyTerminal.Subtitle6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/passportSurnameTextInputET"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="textPersonName|textNoSuggestions"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/passportNameTextField"
+                    style="@style/Widget.MyTerminal.TextInputLayout.OutlinedBox"
+                    android:layout_width="@dimen/standard_field_width"
+                    android:layout_height="@dimen/standard_field_height"
+                    android:hint="@string/hint_passport_name"
+                    app:errorIconDrawable="@drawable/ic_error"
+                    app:helperTextTextAppearance="@style/TextAppearance.MyTerminal.Subtitle6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/passportNameTextInputET"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="textPersonName|textNoSuggestions"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/passportPatronymicTextField"
+                    style="@style/Widget.MyTerminal.TextInputLayout.OutlinedBox"
+                    android:layout_width="@dimen/standard_field_width"
+                    android:layout_height="@dimen/standard_field_height"
+                    android:hint="@string/hint_passport_patronymic"
+                    app:errorIconDrawable="@drawable/ic_error"
+                    app:helperTextTextAppearance="@style/TextAppearance.MyTerminal.Subtitle6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/passportPatronymicTextInputET"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="textPersonName|textNoSuggestions"
+                        android:maxLines="1" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/passportBirthdayTextField"
+                    style="@style/Widget.MyTerminal.TextInputLayout.OutlinedBox"
+                    android:layout_width="@dimen/small_field_width"
+                    android:layout_height="@dimen/standard_field_height"
+                    android:hint="@string/hint_passport_birthday"
+                    app:errorIconDrawable="@drawable/ic_error"
+                    app:helperTextTextAppearance="@style/TextAppearance.MyTerminal.Subtitle6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/passportBirthdayTextInputET"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="date|textNoSuggestions"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/gender_spinner"
+                    android:layout_width="@dimen/small_field_width"
+                    android:layout_height="@dimen/standard_field_height" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/noticePhoto"
+                style="@style/TextAppearance.MyTerminal.Subtitle4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/big_view_distance"
+                android:gravity="center"
+                android:text="@string/needed_photo_notice_text"
+                android:textAppearance="?attr/textAppearanceHeadline4"
+                android:textColor="@color/material_on_background_emphasis_medium" />
+
+            <Button
+                android:id="@+id/send_data_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:minWidth="@dimen/min_button_width"
+                android:layout_marginTop="@dimen/medium_view_distance"
+                android:text="@string/continue_button_text" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>

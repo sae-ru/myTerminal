@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Layout for settings -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SettingFragment">
+
+    <data>
+        <variable
+            name="settingFragment"
+            type="com.example.myterminal.SettingFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/main_tablet_padding">
+
+        <TextView
+            android:id="@+id/settingServicesTV"
+            style="@style/TextAppearance.MyTerminal.Subtitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/big_view_distance"
+            android:gravity="center"
+            android:text="@string/settings_services_text"
+            android:textAppearance="?attr/textAppearanceHeadline4"
+            android:textColor="@color/material_on_background_emphasis_medium" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ocrServiceTextField"
+            style="@style/Widget.MyTerminal.TextInputLayout.OutlinedBox"
+            android:layout_width="@dimen/standard_field_width"
+            android:layout_height="@dimen/standard_field_height"
+            android:hint="@string/hint_ocr_service"
+            app:errorIconDrawable="@drawable/ic_error"
+            app:helperTextTextAppearance="@style/TextAppearance.MyTerminal.Subtitle6">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ocrServiceTextInputET"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textUri|textNoSuggestions"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/authServiceTextField"
+            style="@style/Widget.MyTerminal.TextInputLayout.OutlinedBox"
+            android:layout_width="@dimen/standard_field_width"
+            android:layout_height="@dimen/standard_field_height"
+            android:hint="@string/hint_auth_service"
+            app:errorIconDrawable="@drawable/ic_error"
+            app:helperTextTextAppearance="@style/TextAppearance.MyTerminal.Subtitle6">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/authServiceTextInputET"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textUri|textNoSuggestions"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/save_settings_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/big_view_distance"
+            android:minWidth="@dimen/min_button_width"
+            android:onClick="@{() -> settingFragment.saveSettings()}"
+            android:text="@string/save_button_text" />
+
+    </LinearLayout>
+
+</layout>

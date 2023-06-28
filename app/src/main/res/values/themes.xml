@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MyTerminal" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/dark_blue_500</item>
+        <item name="colorPrimaryVariant">@color/light_blue_500</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/dark_purple_400</item>
+        <item name="colorSecondaryVariant">@color/pink_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <!-- Text appearance style. -->
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.MyTerminal.Subtitle1</item>
+    </style>
+
+    <style name="Theme.MyTerminal" parent="Base.Theme.MyTerminal" />
+</resources>
