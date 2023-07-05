@@ -41,13 +41,13 @@
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.example.myterminal.SettingFragment"
-        android:label="fragment_setting"
+        android:label="@string/layout_label_settings"
         tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/takePassportPhotoFragment"
-        android:name="com.example.myterminal.registration.TakePassportPhotoFragment"
-        android:label="fragment_take_passport_photo"
-        tools:layout="@layout/fragment_take_passport_photo" >
+        android:name="com.example.myterminal.registration.TakePassportImageFragment"
+        android:label="@string/layout_label_takePassportImage"
+        tools:layout="@layout/fragment_take_passport_image" >
         <action
             android:id="@+id/action_takePassportPhotoFragment_to_fillDataFragment"
             app:destination="@id/fillDataFragment" />
@@ -55,7 +55,7 @@
     <fragment
         android:id="@+id/takeFacePhotoFragment"
         android:name="com.example.myterminal.registration.TakeFacePhotoFragment"
-        android:label="fragment_take_face_photo"
+        android:label="@string/layout_label_takeFacePhoto"
         tools:layout="@layout/fragment_take_face_photo" >
         <action
             android:id="@+id/action_takeFacePhotoFragment_to_endRegistrationFragment"
@@ -64,6 +64,6 @@
     <fragment
         android:id="@+id/endRegistrationFragment"
         android:name="com.example.myterminal.registration.EndRegistrationFragment"
-        android:label="fragment_end_registration"
+        android:label="@string/layout_label_step4"
         tools:layout="@layout/fragment_end_registration" />
 </navigation>

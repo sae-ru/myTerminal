@@ -79,7 +79,7 @@ class TakeFacePhotoFragment : Fragment() {
             viewModel.setPassportFacePhotoByteArray(viewModel.bitmapToByteArray(newFacePhotoBitmap))
 
             //TODO: connect to internet and send part of data (or all data?)
-            //viewModel.postAuthData()
+            viewModel.postAuthPassportData()
 
             findNavController().navigate(R.id.action_takeFacePhotoFragment_to_endRegistrationFragment)
         } else

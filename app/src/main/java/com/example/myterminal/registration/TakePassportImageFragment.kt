@@ -20,17 +20,18 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.myterminal.R
-import com.example.myterminal.databinding.FragmentTakePassportPhotoBinding
+import com.example.myterminal.databinding.FragmentTakePassportImageBinding
 import com.example.myterminal.model.DocViewModel
+import com.example.myterminal.model.toBase64
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class TakePassportPhotoFragment : Fragment() {
+class TakePassportImageFragment : Fragment() {
 
     // Binding object instance corresponding to the fragment_choose_action.xml layout
     // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
     // when the view hierarchy is attached to the fragment.
-    private var binding: FragmentTakePassportPhotoBinding? = null
+    private var binding: FragmentTakePassportImageBinding? = null
 
     // Create a ViewModel the first time the fragment is created.
     // If the fragment is re-created, it receives the same GameViewModel instance created by the
@@ -41,7 +42,7 @@ class TakePassportPhotoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val fragmentBinding = FragmentTakePassportPhotoBinding
+        val fragmentBinding = FragmentTakePassportImageBinding
             .inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
@@ -144,7 +145,11 @@ class TakePassportPhotoFragment : Fragment() {
 
     private fun saveData() {
         if (wasPassportImageInstalled) {
-            viewModel.setPassportImageByteArray(viewModel.bitmapToByteArray(newPassportImageBitmap))
+            viewModel.setPassportImageBase64String(
+                viewModel
+                    .bitmapToByteArray(newPassportImageBitmap)
+                    .toBase64()
+            )
 
             //TODO: connect to internet and send photo
             //viewModel.postOCRData()

@@ -7,10 +7,13 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.Headers
 import retrofit2.http.POST
 
 //TODO: find service's url
-var AUTH_SERVICE_URL = ""
+var AUTH_SERVICE_URL = "192.168.143.1"
+
+//private val okHttpClientAuth = OkHttpClient.Builder().build()
 
 private val moshiAuth = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -18,17 +21,24 @@ private val moshiAuth = Moshi.Builder()
 
 private val retrofitForAuth = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshiAuth))
-    .baseUrl(AUTH_SERVICE_URL)
+    .baseUrl("https://$AUTH_SERVICE_URL")
+//    .client(okHttpClientAuth)
     .build()
 
 interface AuthApiService {
-    //TODO: path for post data
-    @POST("")
-    suspend fun postPassportData(@Body passportDataBody: Map<String, Any>): Call<ResponseBody>
+
+    @Headers("Content-Type: application/json")
+    @POST("/api/v1/auth")
+    suspend fun postAuthorizationAsync(@Body authorizationBody: Map<String, String>): AuthResponseToken
+
+    @Headers("Content-Type: application/json")
+    @POST("/api/v1/permit")
+    suspend fun postPassportData(@Body passportDataBody: Map<String, String>): Call<ResponseBody>
 }
 
 object AuthApi {
-    val retrofitAuthService : AuthApiService by lazy {
-        retrofitForAuth.create(AuthApiService::class.java) }
+    val retrofitAuthService: AuthApiService by lazy {
+        retrofitForAuth.create(AuthApiService::class.java)
+    }
 }
 

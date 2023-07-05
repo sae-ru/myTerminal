@@ -16,9 +16,13 @@
 
     <string name="save_button_text">Сохранить</string>
 
+    <string name="layout_label_settings">Настройки</string>
     <string name="layout_label_step1">Шаг 1</string>
     <string name="layout_label_step2">Шаг 2</string>
     <string name="layout_label_step3">Шаг 3</string>
+    <string name="layout_label_takePassportImage">Сфотографируйте паспорт</string>
+    <string name="layout_label_takeFacePhoto">Сфотографируйтесь</string>
+    <string name="layout_label_step4">Шаг 4</string>
 
     <string name="terminal_statements">Продолжая работать с терминалом, Вы даёте согласие на ввод и обработку персональных данных.</string>
     <string name="choose_write_action_text">Как вы хотите ввести данные?</string>
