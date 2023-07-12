@@ -6,13 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".registration.ChooseWriteActionFragment">
 
-    <data>
-
-        <variable
-            name="chooseWriteActionFragment"
-            type="com.example.myterminal.registration.ChooseWriteActionFragment" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -45,7 +38,6 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/medium_view_distance"
                 android:minWidth="@dimen/min_button_width"
-                android:onClick="@{() -> chooseWriteActionFragment.scanPassport()}"
                 android:text="@string/scan_passport_button_text" />
 
             <Button
@@ -54,7 +46,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:minWidth="@dimen/min_button_width"
-                android:onClick="@{() -> chooseWriteActionFragment.writeManually()}"
                 android:text="@string/manually_write_button_text" />
 
         </LinearLayout>

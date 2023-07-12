@@ -15,6 +15,7 @@
     <string name="hint_auth_service">Адрес сервиса отправки данных</string>
 
     <string name="save_button_text">Сохранить</string>
+    <string name="continue_button_text">Продолжить</string>
 
     <string name="layout_label_settings">Настройки</string>
     <string name="layout_label_step1">Шаг 1</string>
@@ -45,12 +46,15 @@
     <string name="hint_passport_gender">Пол</string>
     <string name="error_fields_toast_text">Поля заполнены неверно!</string>
 
-    <string name="continue_button_text">Продолжить</string>
+    <string name="postAuthToken_error_toast_text">Ошибка сервера</string>
+    <string name="postOCRData_error_toast_text">Ошибка распознования</string>
+    <string name="postAuthPassportData_error_toast_text">Ошибка отправления данных</string>
+    <string name="data_processed_button_text">Данные обрабатываются</string>
+    <string name="try_again_button_text">Повторить</string>
 
     <string name="empty_field_error">Это поле обязательно</string>
     <string name="passport_ID_field_error">Номер паспорта составляет ровно 10 цифр</string>
 
     <string name="end_fragment_text">Успешно!</string>
-
 
 </resources>

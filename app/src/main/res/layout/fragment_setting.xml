@@ -6,12 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".SettingFragment">
 
-    <data>
-        <variable
-            name="settingFragment"
-            type="com.example.myterminal.SettingFragment" />
-    </data>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,16 +28,17 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ocrServiceTextField"
             style="@style/Widget.MyTerminal.TextInputLayout.OutlinedBox"
-            android:layout_width="@dimen/standard_field_width"
-            android:layout_height="@dimen/standard_field_height"
+            android:layout_width="@dimen/big_field_width"
+            android:layout_height="wrap_content"
             android:hint="@string/hint_ocr_service"
             app:errorIconDrawable="@drawable/ic_error"
-            app:helperTextTextAppearance="@style/TextAppearance.MyTerminal.Subtitle6">
+            app:helperTextTextAppearance="@style/TextAppearance.MyTerminal.Subtitle4">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ocrServiceTextInputET"
+                style="@style/TextAppearance.MyTerminal.Subtitle4"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:inputType="textUri|textNoSuggestions"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -51,16 +46,17 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/authServiceTextField"
             style="@style/Widget.MyTerminal.TextInputLayout.OutlinedBox"
-            android:layout_width="@dimen/standard_field_width"
-            android:layout_height="@dimen/standard_field_height"
+            android:layout_width="@dimen/big_field_width"
+            android:layout_height="wrap_content"
             android:hint="@string/hint_auth_service"
             app:errorIconDrawable="@drawable/ic_error"
-            app:helperTextTextAppearance="@style/TextAppearance.MyTerminal.Subtitle6">
+            app:helperTextTextAppearance="@style/TextAppearance.MyTerminal.Hint">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/authServiceTextInputET"
+                style="@style/TextAppearance.MyTerminal.Subtitle4"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:inputType="textUri|textNoSuggestions"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -72,7 +68,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/big_view_distance"
             android:minWidth="@dimen/min_button_width"
-            android:onClick="@{() -> settingFragment.saveSettings()}"
             android:text="@string/save_button_text" />
 
     </LinearLayout>

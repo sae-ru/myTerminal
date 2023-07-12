@@ -9,21 +9,25 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.myterminal.R
 import com.example.myterminal.databinding.FragmentTakeFacePhotoBinding
+import com.example.myterminal.model.ApiStatus
 import com.example.myterminal.model.DocViewModel
+import com.example.myterminal.model.toBase64
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+/**
+ * Fragment for taking a face photo and sending data to the ESM server
+ */
 class TakeFacePhotoFragment : Fragment() {
 
     // Binding object instance corresponding to the fragment_choose_action.xml layout
@@ -39,7 +43,7 @@ class TakeFacePhotoFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val fragmentBinding = FragmentTakeFacePhotoBinding
             .inflate(inflater, container, false)
         binding = fragmentBinding
@@ -49,7 +53,6 @@ class TakeFacePhotoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        super.onViewCreated(view, savedInstanceState)
         // Request camera permissions
         if (allPermissionsGranted()) {
             takeFacePhoto()
@@ -57,8 +60,10 @@ class TakeFacePhotoFragment : Fragment() {
             requestPermissions()
         }
 
-        binding?.retakeFacePhotoButton?.setOnClickListener { takeFacePhoto() }
-        binding?.saveFacePhotoButton?.setOnClickListener { saveFaceData() }
+        binding?.apply {
+            retakeFacePhotoButton.setOnClickListener { takeFacePhoto() }
+            saveFacePhotoButton.setOnClickListener { savePhoto() }
+        }
     }
 
     /**
@@ -74,20 +79,52 @@ class TakeFacePhotoFragment : Fragment() {
     private lateinit var newFacePhotoBitmap: Bitmap
     private var wasFacePhotoInstalled: Boolean = false
 
-    private fun saveFaceData() {
-        if (wasFacePhotoInstalled){
-            viewModel.setPassportFacePhotoByteArray(viewModel.bitmapToByteArray(newFacePhotoBitmap))
-
-            //TODO: connect to internet and send part of data (or all data?)
-            viewModel.postAuthPassportData()
-
-            findNavController().navigate(R.id.action_takeFacePhotoFragment_to_endRegistrationFragment)
+    private fun savePhoto() {
+        if (wasFacePhotoInstalled) {
+            viewModel.setPassportFacePhotoBase64String(
+                viewModel.bitmapToByteArray(newFacePhotoBitmap).toBase64()
+            )
+            sendAllData()
         } else
             Toast.makeText(
                 context,
                 getString(R.string.empty_photo_toast_text),
                 Toast.LENGTH_SHORT
             ).show()
+    }
+
+    private fun sendAllData() {
+        //connect to ESM server and send all passport data
+        viewModel.postAuthPassportData()
+
+        viewModel.authPassportDataPostStatus.observe(viewLifecycleOwner) { postDataStatus ->
+            when (postDataStatus) {
+                ApiStatus.ERROR -> {
+                    Toast.makeText(
+                        context,
+                        getString(R.string.postAuthPassportData_error_toast_text),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    binding?.saveFacePhotoButton!!.apply {
+                        text = getString(R.string.try_again_button_text)
+                        isEnabled = true
+                    }
+                }
+                ApiStatus.DONE -> {
+                    binding?.saveFacePhotoButton!!.apply {
+                        text = getString(R.string.continue_button_text)
+                        isEnabled = true
+                    }
+//                    findNavController().navigate(R.id.action_takeFacePhotoFragment_to_endRegistrationFragment)
+                }
+                else -> {
+                    binding?.saveFacePhotoButton!!.apply {
+                        text = getString(R.string.data_processed_button_text)
+                        isEnabled = false
+                    }
+                }
+            }
+        }
     }
 
     private fun takeFacePhoto() {
@@ -115,7 +152,7 @@ class TakeFacePhotoFragment : Fragment() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 try {
-                    val bitmap =  MediaStore.Images.Media
+                    val bitmap = MediaStore.Images.Media
                         .getBitmap(requireActivity().contentResolver, newFacePhotoUri)
                     binding?.faceImageView?.setImageBitmap(bitmap)
                     newFacePhotoBitmap = bitmap

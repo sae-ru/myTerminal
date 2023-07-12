@@ -22,7 +22,7 @@ class ChooseWriteActionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val fragmentBinding = FragmentChooseWriteActionBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
@@ -30,7 +30,11 @@ class ChooseWriteActionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.chooseWriteActionFragment = this
+
+        binding?.apply {
+            manuallyWriteButton.setOnClickListener { writeManually() }
+            scanPassportButton.setOnClickListener { scanPassport() }
+        }
     }
 
     /**

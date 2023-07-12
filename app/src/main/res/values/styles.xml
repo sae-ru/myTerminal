@@ -9,7 +9,7 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="TextAppearance.MyTerminal.Subtitle6" parent="TextAppearance.MaterialComponents.Subtitle2">
+    <style name="TextAppearance.MyTerminal.Hint" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="android:textSize">14sp</item>
     </style>
 
@@ -18,7 +18,15 @@
         <item name="errorIconTint">@color/red_700</item>
         <item name="errorTextColor">@color/red_700</item>
         <item name="errorIconDrawable">@drawable/ic_error</item>
-        <item name="helperTextTextAppearance">@style/TextAppearance.MyTerminal.Subtitle6</item>
+        <item name="helperTextTextAppearance">@style/TextAppearance.MyTerminal.Subtitle4</item>
+    </style>
+
+    <style name="Widget.MyTerminal.TextInputLayout.DropDownMenu" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxStrokeErrorColor">@color/red_700</item>
+        <item name="errorIconTint">@color/red_700</item>
+        <item name="errorTextColor">@color/red_700</item>
+        <item name="errorIconDrawable">@drawable/ic_error</item>
+        <item name="helperTextTextAppearance">@style/TextAppearance.MyTerminal.Subtitle4</item>
     </style>
 
 <!--    <style name="Widget.MyTerminal.Button" parent="Widget.MaterialComponents.Button.TextButton"></style>-->

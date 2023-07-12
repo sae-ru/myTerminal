@@ -18,18 +18,18 @@
             android:contentDescription="@string/image_content_description_passport_text" />
 
         <Button
-            android:id="@+id/retake_passport_photo_button"
+            android:id="@+id/retake_passport_image_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/medium_view_distance"
             android:minWidth="@dimen/min_button_width"
             android:text="@string/retake_photo_button_text"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/save_passport_photo_button"
+            app:layout_constraintEnd_toStartOf="@+id/save_passport_image_button"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/save_passport_photo_button"
+            android:id="@+id/save_passport_image_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/medium_view_distance"
@@ -37,7 +37,7 @@
             android:text="@string/save_button_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/retake_passport_photo_button" />
+            app:layout_constraintStart_toEndOf="@+id/retake_passport_image_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

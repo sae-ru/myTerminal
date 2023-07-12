@@ -1,10 +1,10 @@
 package com.example.myterminal.registration
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.myterminal.R
 import com.example.myterminal.databinding.FragmentChooseActionBinding
@@ -22,7 +22,7 @@ class ChooseActionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val fragmentBinding = FragmentChooseActionBinding
             .inflate(inflater, container, false)
         binding = fragmentBinding
@@ -31,11 +31,16 @@ class ChooseActionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.chooseActionFragment = this
+
+        binding?.apply {
+            getPassButton.setOnClickListener { getPass() }
+            settingButton.setOnClickListener { goToSettings() }
+        }
     }
 
     /**
      * Start getting a pass.
+     *
      * Go to chooseWriteActionFragment
      */
     fun getPass() {

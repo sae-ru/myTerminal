@@ -6,12 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".registration.ChooseActionFragment">
 
-    <data>
-        <variable
-            name="chooseActionFragment"
-            type="com.example.myterminal.registration.ChooseActionFragment" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,7 +16,6 @@
             android:id="@+id/settingButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> chooseActionFragment.goToSettings()}"
             android:text="@string/action_setting_button_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -54,19 +47,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:minWidth="@dimen/min_button_width"
-                android:onClick="@{() -> chooseActionFragment.getPass()}"
                 android:text="@string/action_get_pass_button_text" />
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/chooseActionWarningTV"
-            style="@style/TextAppearance.MyTerminal.Subtitle6"
+            style="@style/TextAppearance.MyTerminal.Subtitle4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:text="@string/terminal_statements"
             android:textAppearance="?attr/textAppearanceHeadline4"
+            android:textColor="@color/material_on_background_emphasis_medium"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

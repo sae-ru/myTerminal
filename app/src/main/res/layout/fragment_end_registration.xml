@@ -6,12 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".registration.EndRegistrationFragment">
 
-    <data>
-        <variable
-            name="endRegistrationFragment"
-            type="com.example.myterminal.registration.EndRegistrationFragment" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -18,14 +18,17 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.myterminal.R
 import com.example.myterminal.databinding.FragmentTakePassportImageBinding
+import com.example.myterminal.model.ApiStatus
 import com.example.myterminal.model.DocViewModel
 import com.example.myterminal.model.toBase64
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+/**
+ * Fragment for taking a passport image and sending data to the OCR server
+ */
 class TakePassportImageFragment : Fragment() {
 
     // Binding object instance corresponding to the fragment_choose_action.xml layout
@@ -41,7 +44,7 @@ class TakePassportImageFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val fragmentBinding = FragmentTakePassportImageBinding
             .inflate(inflater, container, false)
         binding = fragmentBinding
@@ -50,6 +53,9 @@ class TakePassportImageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding?.lifecycleOwner = viewLifecycleOwner
+
         // Request camera permissions
         if (allPermissionsGranted()) {
             takePassportPhoto()
@@ -57,8 +63,10 @@ class TakePassportImageFragment : Fragment() {
             requestPermissions()
         }
 
-        binding?.retakePassportPhotoButton?.setOnClickListener { takePassportPhoto() }
-        binding?.savePassportPhotoButton?.setOnClickListener { saveData() }
+        binding?.apply {
+            retakePassportImageButton.setOnClickListener { takePassportPhoto() }
+            savePassportImageButton.setOnClickListener { saveOCRData() }
+        }
     }
 
     private lateinit var newPassportImageUri: Uri
@@ -143,7 +151,7 @@ class TakePassportImageFragment : Fragment() {
         return null
     }*/
 
-    private fun saveData() {
+    private fun saveOCRData() {
         if (wasPassportImageInstalled) {
             viewModel.setPassportImageBase64String(
                 viewModel
@@ -151,10 +159,38 @@ class TakePassportImageFragment : Fragment() {
                     .toBase64()
             )
 
-            //TODO: connect to internet and send photo
-            //viewModel.postOCRData()
+            //connect to OCR server, send passport image and get passport fields
+            viewModel.postOCRData()
 
-            findNavController().navigate(R.id.action_takePassportPhotoFragment_to_fillDataFragment)
+            viewModel.ocrPostStatus.observe(viewLifecycleOwner) { ocrStatus ->
+                when (ocrStatus) {
+                    ApiStatus.ERROR -> {
+                        Toast.makeText(
+                            context,
+                            getString(R.string.postOCRData_error_toast_text),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        binding?.savePassportImageButton!!.apply {
+                            text = getString(R.string.try_again_button_text)
+                            isEnabled = true
+                        }
+                    }
+                    ApiStatus.DONE -> {
+                        binding?.savePassportImageButton!!.apply {
+                            text = getString(R.string.continue_button_text)
+                            isEnabled = true
+                        }
+//                        findNavController().navigate(R.id.action_takePassportImageFragment_to_fillDataFragment)
+                    }
+                    else -> {
+                        binding?.savePassportImageButton!!.apply {
+                            text = getString(R.string.data_processed_button_text)
+                            isEnabled = false
+                        }
+                    }
+                }
+            }
+
         } else
             Toast.makeText(
                 context,
@@ -226,8 +262,7 @@ class TakePassportImageFragment : Fragment() {
     private val activityResultLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()
-        )
-        { permissions ->
+        ) { permissions ->
             // Handle Permission granted/rejected
             var permissionGranted = true
             permissions.entries.forEach {
