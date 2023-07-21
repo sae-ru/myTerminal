@@ -219,6 +219,7 @@ class TakePassportImageFragment : Fragment() {
         wasPassportImageInstalled = false
 
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        cameraIntent.putExtra("android.intent.extras.CAMERA_FACING", 1)
         resultLauncher.launch(cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, newPassportImageUri))
     }
 
