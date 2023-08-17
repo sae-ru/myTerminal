@@ -2,6 +2,7 @@ package com.example.myterminal.model
 
 import android.graphics.Bitmap
 import android.util.Base64
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -174,8 +175,7 @@ class DocViewModel : ViewModel() {
             series = _passportID.value.toString().substring(0, 4),
             docNumber = _passportID.value.toString().substring(4),
             description = "${_surname.value} ${_name.value} ${_patronymic.value}",
-            birthday = _birthday.value,
-
+            birthday = _birthday.value!!,
             note = _passportFacePhotoBase64String.value ?: "",
             note2 = _passportOCRFacePhotoBase64String.value ?: ""
         )
@@ -218,7 +218,7 @@ class DocViewModel : ViewModel() {
                     }"
                 )*/
                 val ocrResponse = OCRApi.retrofitOCRService.postPassportImage(passportBodyForOCR)
-//                Log.d("MYTAG", "ocrResponse: $ocrResponse")
+                Log.d("MYTAG", "ocrResponse: $ocrResponse")
 
                 //handle the response
                 setPassportID(ocrResponse.passportID.toInt())
@@ -232,7 +232,7 @@ class DocViewModel : ViewModel() {
                 _ocrPostStatus.value = ApiStatus.DONE
             } catch (e: Exception) {
                 _ocrPostStatus.value = ApiStatus.ERROR
-//                Log.d("MYTAG", "Failure OCR POST: $e")
+                Log.d("MYTAG", "Failure OCR POST: $e")
             }
         }
     }
@@ -255,10 +255,10 @@ class DocViewModel : ViewModel() {
             try {
                 val authTokenResponse = AuthApi.retrofitAuthService.postAuthorization(tokenRequestBody)
                 personalToken = authTokenResponse.token
-//                Log.d("MYTAG", "personalToken: $personalToken")
+                Log.d("MYTAG", "personalToken: $personalToken")
                 _authLoginPostStatus.value = ApiStatus.DONE
             } catch (e: Exception) {
-//                Log.d("MYTAG", "ERROR getting Token: $e")
+                Log.d("MYTAG", "ERROR getting Token: $e")
                 _authLoginPostStatus.value = ApiStatus.ERROR
                 //handle the failure
                 personalToken = ""
@@ -278,14 +278,15 @@ class DocViewModel : ViewModel() {
         viewModelScope.launch {
             _authPassportDataPostStatus.value = ApiStatus.LOADING
             try {
-                AuthApi.retrofitAuthService.postPassportData(
+                val response = AuthApi.retrofitAuthService.postPassportData(
                     passportBodyForAuth,
                     personalToken
                 )
-//                Log.d("MYTAG", "Success Auth Passport Data POST: ")
+                Log.d("MYTAG", response.toString())
+                Log.d("MYTAG", "Success Auth Passport Data POST: ")
                 _authPassportDataPostStatus.value = ApiStatus.DONE
             } catch (e: Exception) {
-//                Log.d("MYTAG", "Failure Auth Passport Data POST: $e")
+                Log.d("MYTAG", "Failure Auth Passport Data POST: $e")
                 _authPassportDataPostStatus.value = ApiStatus.ERROR
             }
         }
