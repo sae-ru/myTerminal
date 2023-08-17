@@ -14,42 +14,42 @@ data class AuthPersonResponse(
     @Json(name = "devaddr")
     val devaddr: Int?,
     @Json(name = "docNumber")
-    val docNumber: String,
+    val docNumber: String?,
     //date of person's creation
     @Json(name = "issuedWhen")
-    val issuedWhen: Int?,
+    val issuedWhen: String?,
     @Json(name = "birthPlace")
-    val birthPlace: String,
+    val birthPlace: String?,
     @Json(name = "citizenship")
-    val citizenship: String,
+    val citizenship: String?,
     @Json(name = "series")
-    val series: String,
+    val series: String?,
     //place of registration
     @Json(name = "placeOfResidence")
-    val placeOfResidence: String,
+    val placeOfResidence: String?,
     @Json(name = "note")
-    val note: String,
+    val note: String?,
     @Json(name = "birthday")
-    val birthday: Int?,
+    val birthday: String?,
     @Json(name = "phoneNumber")
-    val phoneNumber: String,
+    val phoneNumber: String?,
     //amount of workers
     @Json(name = "employeeNumber")
-    val employeeNumber: String,
+    val employeeNumber: String?,
     @Json(name = "document")
-    val document: String,
+    val document: String?,
     //Кем выдан
     @Json(name = "issuedBy")
-    val issuedBy: String,
+    val issuedBy: String?,
     //ФИО
     @Json(name = "description")
-    val description: String,
+    val description: String?,
     @Json(name = "insearch")
     val insearch: Int?,
     @Json(name = "category")
     val category: Int?,
     @Json(name = "email")
-    val email: String,
+    val email: String?,
     @Json(name = "fingerPrint1")
     val fingerPrint1: String?,
     @Json(name = "fingerPrint2")
@@ -73,29 +73,29 @@ data class AuthPersonResponse(
     @Json(name = "postref")
     val postref: Int?,
     @Json(name = "phone")
-    val phone: String,
+    val phone: String?,
     @Json(name = "documentscan")
-    val documentscan: String,
+    val documentscan: String?,
     @Json(name = "canworkout")
     val canworkout: Int?,
     @Json(name = "employmentContract")
-    val employmentContract: String,
+    val employmentContract: String?,
     @Json(name = "placeOfActualResidence")
-    val placeOfActualResidence: String,
+    val placeOfActualResidence: String?,
     @Json(name = "phone2")
-    val phone2: String,
+    val phone2: String?,
     @Json(name = "note2")
-    val note2: String,
+    val note2: String?,
     @Json(name = "note3")
-    val note3: String,
+    val note3: String?,
     @Json(name = "note4")
-    val note4: String,
+    val note4: String?,
     @Json(name = "note5")
-    val note5: String,
+    val note5: String?,
     @Json(name = "note6")
-    val note6: String,
+    val note6: String?,
     @Json(name = "subsystem_ids")
     val subsystemIds: String?, //"{}"
     @Json(name = "remote_guid")
-    val remoteGuid: String
+    val remoteGuid: String?
 )

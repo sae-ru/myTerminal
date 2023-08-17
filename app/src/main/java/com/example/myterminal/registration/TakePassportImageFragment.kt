@@ -17,7 +17,8 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.myterminal.R
 import com.example.myterminal.databinding.FragmentTakePassportImageBinding
 import com.example.myterminal.model.ApiStatus
@@ -39,7 +40,7 @@ class TakePassportImageFragment : Fragment() {
     // Create a ViewModel the first time the fragment is created.
     // If the fragment is re-created, it receives the same GameViewModel instance created by the
     // first fragment.
-    private val viewModel: DocViewModel by viewModels()
+    private val viewModel: DocViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -180,7 +181,7 @@ class TakePassportImageFragment : Fragment() {
                             text = getString(R.string.continue_button_text)
                             isEnabled = true
                         }
-//                        findNavController().navigate(R.id.action_takePassportImageFragment_to_fillDataFragment)
+                        findNavController().navigate(R.id.action_takePassportImageFragment_to_fillDataFragment)
                     }
                     else -> {
                         binding?.savePassportImageButton!!.apply {

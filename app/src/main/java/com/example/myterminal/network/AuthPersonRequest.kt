@@ -6,20 +6,20 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class AuthPersonRequest(
     @Json(name = "flags")
-    val flags: Int? = null,
+    val flags: Int = 0,
     @Json(name = "devparent")
-    val devparent: Int? = null,
+    val devparent: Int = 0,
     @Json(name = "devaddr")
-    val devaddr: Int? = null,
+    val devaddr: Int = 0,
     @Json(name = "docNumber")
     val docNumber: String,
     //date of person's creation
     @Json(name = "issuedWhen")
-    val issuedWhen: String? = null,
+    val issuedWhen: Int = 0,
     @Json(name = "birthPlace")
-    val birthPlace: String = "РФ",
+    val birthPlace: String = "Россия",
     @Json(name = "citizenship")
-    val citizenship: String = "РФ",
+    val citizenship: String = "Россия",
     @Json(name = "series")
     val series: String,
     //place of registration
@@ -29,14 +29,14 @@ data class AuthPersonRequest(
     val note: String = "",
     //??? Int or String ???
     @Json(name = "birthday")
-    val birthday: String?,
+    val birthday: String = "",
     @Json(name = "phoneNumber")
-    val phoneNumber: String? = null,
+    val phoneNumber: String = "",
     //amount of workers
     @Json(name = "employeeNumber")
     val employeeNumber: String = "",
     @Json(name = "document")
-    val document: String = "Пасспорт РФ",
+    val document: String = "Паспорт РФ",
     //Кем выдан
     @Json(name = "issuedBy")
     val issuedBy: String = "",
@@ -44,39 +44,39 @@ data class AuthPersonRequest(
     @Json(name = "description")
     val description: String,
     @Json(name = "insearch")
-    val insearch: Int? = null,
+    val insearch: Int = 0,
     @Json(name = "category")
-    val category: Int? = null,
+    val category: Int = 0,
     @Json(name = "email")
     val email: String = "",
     @Json(name = "fingerPrint1")
-    val fingerPrint1: String? = null,
+    val fingerPrint1: String = "",
     @Json(name = "fingerPrint2")
-    val fingerPrint2: String? = null,
+    val fingerPrint2: String = "",
     @Json(name = "fingerPrint3")
-    val fingerPrint3: String? = null,
+    val fingerPrint3: String = "",
     @Json(name = "fingerPrint4")
-    val fingerPrint4: String? = null,
+    val fingerPrint4: String = "",
     @Json(name = "fingerPrint5")
-    val fingerPrint5: String? = null,
+    val fingerPrint5: String = "",
     @Json(name = "fingerPrint6")
-    val fingerPrint6: String? = null,
+    val fingerPrint6: String = "",
     @Json(name = "fingerPrint7")
-    val fingerPrint7: String? = null,
+    val fingerPrint7: String = "",
     @Json(name = "fingerPrint8")
-    val fingerPrint8: String? = null,
+    val fingerPrint8: String = "",
     @Json(name = "fingerPrint9")
-    val fingerPrint9: String? = null,
+    val fingerPrint9: String = "",
     @Json(name = "fingerPrint10")
-    val fingerPrint10: String? = null,
+    val fingerPrint10: String = "",
     @Json(name = "postref")
-    val postref: Int? = null,
+    val postref: Int = 0,
     @Json(name = "phone")
-    val phone: String? = null,
+    val phone: String = "",
     @Json(name = "documentscan")
     val documentscan: String = "",
     @Json(name = "canworkout")
-    val canworkout: Int? = null,
+    val canworkout: Int = 0,
     @Json(name = "employmentContract")
     val employmentContract: String = "",
     @Json(name = "placeOfActualResidence")
@@ -94,7 +94,7 @@ data class AuthPersonRequest(
     @Json(name = "note6")
     val note6: String = "",
     @Json(name = "subsystem_ids")
-    val subsystemIds: String? = null, //"{}"
+    val subsystemIds: String = "", //"{}"
     @Json(name = "remote_guid")
     val remoteGuid: String = ""
 )
